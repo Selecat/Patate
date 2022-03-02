@@ -22,9 +22,24 @@ MainWindow::MainWindow(int leType, QWidget *parent)
         break;
     }
 
-    //variable ligne
-    int ligne =0;
+AfficheAdministrateur();
+AfficheModerateur();
+AfficheProducteur();
 
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+//XITgfUibs1456
+
+
+void MainWindow::AfficheAdministrateur()
+{
+    //initialisation ligne
+    ligne=0;
 
     //SET NB COLONNES
     ui->tableWidgetAdministrateur->setColumnCount(7);
@@ -40,7 +55,6 @@ MainWindow::MainWindow(int leType, QWidget *parent)
         //ajout des lignes et colonnes
         ui->tableWidgetAdministrateur->setRowCount(ligne);
 
-        //XITgfUibs1456
         //login
         ui->tableWidgetAdministrateur->setItem(ligne-1,0,new QTableWidgetItem(adminResult.value("loginEmploye").toString()));
         //nomsupprEmploye
@@ -58,7 +72,76 @@ MainWindow::MainWindow(int leType, QWidget *parent)
     }
 }
 
-MainWindow::~MainWindow()
+void MainWindow::AfficheModerateur()
 {
-    delete ui;
+    //initialisation ligne
+    ligne=0;
+
+    //SET NB COLONNES
+    ui->tableWidgetModerateur->setColumnCount(7);
+
+    //stretch du tableau
+    ui->tableWidgetModerateur->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    //requete affichage Administrateurs
+    QString reqModo ="select numeroEmploye, nomEmploye, prenomEmploye, concat(rueEmploye, villeEmploye, CpEmploye), MailEmploye, TelEmploye, PassEmploye, loginEmploye, numeroTypeEmploye, supprEmploye from Employe where numeroTypeEmploye = 3";
+    QSqlQuery resModo(reqModo);
+    while (resModo.next()) {
+        ligne++;
+
+        //ajout des lignes et colonnes
+        ui->tableWidgetModerateur->setRowCount(ligne);
+
+        //odubic
+        //login
+        ui->tableWidgetModerateur->setItem(ligne-1,0,new QTableWidgetItem(resModo.value("loginEmploye").toString()));
+        //nomsupprEmploye
+        ui->tableWidgetModerateur->setItem(ligne-1,1,new QTableWidgetItem(resModo.value("nomEmploye").toString()));
+        //prenom
+        ui->tableWidgetModerateur->setItem(ligne-1,2,new QTableWidgetItem(resModo.value("prenomEmploye").toString()));
+        //tel
+        ui->tableWidgetModerateur->setItem(ligne-1,3,new QTableWidgetItem(resModo.value("TelEmploye").toString()));
+        //mail
+        ui->tableWidgetModerateur->setItem(ligne-1,4,new QTableWidgetItem(resModo.value("MailEmploye").toString()));
+        //@
+        ui->tableWidgetModerateur->setItem(ligne-1,5,new QTableWidgetItem(resModo.value("concat(rueEmploye, villeEmploye, CpEmploye)").toString()));
+        //checkbox
+        ui->tableWidgetModerateur->setCellWidget(ligne-1,6, new QCheckBox);
+    }
+}
+
+void MainWindow::AfficheProducteur()
+{
+    //initialisation ligne
+    ligne=0;
+
+    //SET NB COLONNES
+    ui->tableWidgetProducteur->setColumnCount(7);
+
+    //stretch du tableau
+    ui->tableWidgetProducteur->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    //requete affichage Administrateurs
+    QString reqModo ="select numeroproducteur, loginProducteur, nomProducteur, prenomProducteur, adresseProducteur, telProducteur, mailProducteur, validiteProducteur from Producteur where validiteProducteur = 1";
+    QSqlQuery resModo(reqModo);
+    while (resModo.next()) {
+        ligne++;
+
+        //ajout des lignes et colonnes
+        ui->tableWidgetProducteur->setRowCount(ligne);
+
+        //odubic
+        //login
+        ui->tableWidgetProducteur->setItem(ligne-1,0,new QTableWidgetItem(resModo.value("loginProducteur").toString()));
+        //nomsupprEmploye
+        ui->tableWidgetProducteur->setItem(ligne-1,1,new QTableWidgetItem(resModo.value("nomProducteur").toString()));
+        //prenom
+        ui->tableWidgetProducteur->setItem(ligne-1,2,new QTableWidgetItem(resModo.value("prenomProducteur").toString()));
+        //tel
+        ui->tableWidgetProducteur->setItem(ligne-1,3,new QTableWidgetItem(resModo.value("telProducteur").toString()));
+        //mail
+        ui->tableWidgetProducteur->setItem(ligne-1,4,new QTableWidgetItem(resModo.value("mailProducteur").toString()));
+        //@
+        ui->tableWidgetProducteur->setItem(ligne-1,5,new QTableWidgetItem(resModo.value("adresseProducteur").toString()));
+        //checkbox
+        ui->tableWidgetProducteur->setCellWidget(ligne-1,6, new QCheckBox);
+    }
 }

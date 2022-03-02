@@ -14,7 +14,10 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(int leType, QWidget *parent = nullptr);
     ~MainWindow();
-
+    void AfficheAdministrateur();
+    void AfficheModerateur();
+    void AfficheProducteur();
+    int ligne;
 private:
     Ui::MainWindow *ui;
 };
