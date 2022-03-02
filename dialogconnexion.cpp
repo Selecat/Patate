@@ -41,8 +41,8 @@ void DialogConnexion::on_pushButton_clicked()
     qDebug()<<typeConnexion;
     QSqlQuery typeConnect(typeConnexion);
     typeConnect.next();
-    int type = typeConnect.value(0).toInt();
-    qDebug()<<type;
+    type = typeConnect.value(0).toInt();
+    //qDebug()<<type;
 }
 
 int DialogConnexion::getType()

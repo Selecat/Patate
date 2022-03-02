@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     DialogConnexion connexion;
     if (connexion.exec()==QDialog::Accepted){
+        qDebug()<<"resultat du dialog:"<<connexion.getType();
         MainWindow w(connexion.getType());
         w.show();
         return a.exec();

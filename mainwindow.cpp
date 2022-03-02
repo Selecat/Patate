@@ -9,7 +9,9 @@ MainWindow::MainWindow(int leType, QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    qDebug()<<leType;
     switch (leType) {
+
         case 1: ui->stackedWidget->setCurrentIndex(0);
         break;
         case 2: ui->stackedWidget->setCurrentIndex(1);
