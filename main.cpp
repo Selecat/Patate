@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     if (connexion.exec()==QDialog::Accepted){
         qDebug()<<"resultat du dialog:"<<connexion.getType();
         MainWindow w(connexion.getType());
-        w.show();
+        w.showMaximized();
         return a.exec();
     }
 }

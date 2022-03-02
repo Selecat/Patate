@@ -43,7 +43,7 @@
         <string notr="true">color: rgb(41, 45, 48);</string>
        </property>
        <property name="text">
-        <string>CONNEXION</string>
+        <string>CONNECTION</string>
        </property>
       </widget>
      </item>
@@ -123,7 +123,7 @@
 color: rgb(27, 27, 29);</string>
      </property>
      <property name="text">
-      <string>Connexion</string>
+      <string>Connect</string>
      </property>
     </widget>
    </item>
