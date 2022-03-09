@@ -27,7 +27,7 @@ AfficheModerateur();
 AfficheProducteur();
 
 AfficheModerateurAdmin();
-
+AfficheProducteurAdmin();
 
 }
 
@@ -149,6 +149,8 @@ void MainWindow::AfficheProducteur()
     }
 }
 //amogus
+//Ideo ?
+// nan nan c pas moi
 void MainWindow::AfficheModerateurAdmin()
 {
     //initialisation ligne
@@ -183,5 +185,42 @@ void MainWindow::AfficheModerateurAdmin()
         ui->tableWidgetModerateurAdmin->setItem(ligne-1,5,new QTableWidgetItem(resModoAdmin.value("concat(rueEmploye, villeEmploye, CpEmploye)").toString()));
         //checkbox
         ui->tableWidgetModerateurAdmin->setCellWidget(ligne-1,6, new QCheckBox);
+    }
+}
+
+void MainWindow::AfficheProducteurAdmin()
+{
+    //initialisation ligne
+    ligne=0;
+
+    //SET NB COLONNES
+    ui->tableWidgetProducteurAdmin->setColumnCount(7);
+
+    //stretch du tableau
+    ui->tableWidgetProducteurAdmin->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    //requete affichage Administrateurs
+    QString reqProdAdmin ="select numeroproducteur, loginProducteur, nomProducteur, prenomProducteur, adresseProducteur, telProducteur, mailProducteur, validiteProducteur from Producteur where validiteProducteur = 1";
+    QSqlQuery resProdAdmin(reqProdAdmin);
+    while (resProdAdmin.next()) {
+        ligne++;
+
+        //ajout des lignes et colonnes
+        ui->tableWidgetProducteurAdmin->setRowCount(ligne);
+
+        //odubic
+        //login
+        ui->tableWidgetProducteurAdmin->setItem(ligne-1,0,new QTableWidgetItem(resProdAdmin.value("loginProducteur").toString()));
+        //nomsupprEmploye
+        ui->tableWidgetProducteurAdmin->setItem(ligne-1,1,new QTableWidgetItem(resProdAdmin.value("nomProducteur").toString()));
+        //prenom
+        ui->tableWidgetProducteurAdmin->setItem(ligne-1,2,new QTableWidgetItem(resProdAdmin.value("prenomProducteur").toString()));
+        //tel
+        ui->tableWidgetProducteurAdmin->setItem(ligne-1,3,new QTableWidgetItem(resProdAdmin.value("telProducteur").toString()));
+        //mail
+        ui->tableWidgetProducteurAdmin->setItem(ligne-1,4,new QTableWidgetItem(resProdAdmin.value("mailProducteur").toString()));
+        //@
+        ui->tableWidgetProducteurAdmin->setItem(ligne-1,5,new QTableWidgetItem(resProdAdmin.value("adresseProducteur").toString()));
+        //checkbox
+        ui->tableWidgetProducteurAdmin->setCellWidget(ligne-1,6, new QCheckBox);
     }
 }

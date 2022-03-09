@@ -19,6 +19,7 @@ public:
     void AfficheProducteur();
 
     void AfficheModerateurAdmin();
+    void AfficheProducteurAdmin();
     int ligne;
 private:
     Ui::MainWindow *ui;
