@@ -21,6 +21,9 @@ public:
     void AfficheModerateurAdmin();
     void AfficheProducteurAdmin();
     int ligne;
+private slots:
+    void on_pushButtonAddAdmin_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

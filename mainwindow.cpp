@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "dialogaddadmin.h"
 
 #include <QCheckBox>
 #include <QSqlQuery>
@@ -224,3 +225,10 @@ void MainWindow::AfficheProducteurAdmin()
         ui->tableWidgetProducteurAdmin->setCellWidget(ligne-1,6, new QCheckBox);
     }
 }
+
+void MainWindow::on_pushButtonAddAdmin_clicked()
+{
+   DialogAddAdmin dialog(this);
+   dialog.exec();
+}
+

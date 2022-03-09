@@ -15,6 +15,11 @@ public:
     explicit DialogAddAdmin(QWidget *parent = nullptr);
     ~DialogAddAdmin();
 
+private slots:
+    void on_pushButtonAddAdministrator_clicked();
+
+    void on_pushButtonCancelAddAdministrator_clicked();
+
 private:
     Ui::DialogAddAdmin *ui;
 };

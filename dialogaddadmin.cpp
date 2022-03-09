@@ -12,3 +12,16 @@ DialogAddAdmin::~DialogAddAdmin()
 {
     delete ui;
 }
+
+void DialogAddAdmin::on_pushButtonAddAdministrator_clicked()
+{
+    QString reqAddAdmin = "INSERT INTO Employe loginEmploye, PassEmploye, nomEmploye, PrenomEmploye, TelEmploye, MailEmploye, rueEmploye, villeEmploye, CpEmploye";
+
+}
+
+
+void DialogAddAdmin::on_pushButtonCancelAddAdministrator_clicked()
+{
+    close();
+}
+
