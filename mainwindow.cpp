@@ -44,6 +44,7 @@ void MainWindow::AfficheAdministrateur()
 {
     //initialisation ligne
     ligne=0;
+    ui->tableWidgetAdministrateur->setRowCount(0);
 
     //SET NB COLONNES
     ui->tableWidgetAdministrateur->setColumnCount(7);
@@ -51,7 +52,7 @@ void MainWindow::AfficheAdministrateur()
     //stretch du tableau
     ui->tableWidgetAdministrateur->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     //requete affichage Administrateurs
-    QString adminQuery ="select numeroEmploye, nomEmploye, prenomEmploye, concat(rueEmploye, villeEmploye, CpEmploye), MailEmploye, TelEmploye, PassEmploye, loginEmploye, numeroTypeEmploye, supprEmploye from Employe where numeroTypeEmploye = 2";
+    QString adminQuery ="select numeroEmploye, nomEmploye, prenomEmploye, concat(rueEmploye, villeEmploye, CpEmploye), MailEmploye, TelEmploye, PassEmploye, loginEmploye, numeroTypeEmploye, supprEmploye from Employe where numeroTypeEmploye = 2 and supprEmploye = 0";
     QSqlQuery adminResult(adminQuery);
     while (adminResult.next()) {
         ligne++;
@@ -228,7 +229,62 @@ void MainWindow::AfficheProducteurAdmin()
 
 void MainWindow::on_pushButtonAddAdmin_clicked()
 {
+   typeEmployeDialog="2";
    DialogAddAdmin dialog(this);
    dialog.exec();
+   qDebug()<<"type employe admin"<<typeEmployeDialog;
+}
+
+
+void MainWindow::on_pushButtonDelAdmin_clicked()
+{
+    //on check le nb de lignes
+    for (int nbLigne = ui->tableWidgetAdministrateur->rowCount()-1; nbLigne>=0; nbLigne--) {
+        qDebug()<<"for checkbox"<<nbLigne;
+        //si la checkbox est cochée
+        if(((QCheckBox*)(ui->tableWidgetAdministrateur->cellWidget(nbLigne,6)))->isChecked())
+            {
+                qDebug()<<"if checkbox";
+                //on recupere le login
+                QString login = ui->tableWidgetAdministrateur->item(nbLigne,0)->text();
+                qDebug()<<"login : "<<login;
+                //passer le bool à 1
+                QString reqDelAdmin = "UPDATE Employe SET supprEmploye = 1 where loginEmploye='"+login+"'";
+                qDebug()<<"reqDelAdmin : "<<reqDelAdmin;
+                QSqlQuery resDelAdmin (reqDelAdmin);
+                resDelAdmin.next();
+            }
+    }
+    AfficheAdministrateur();
+}
+
+
+void MainWindow::on_action_Quit_triggered()
+{
+    close();
+}
+
+
+void MainWindow::on_pushButtonModifyAdmin_clicked()
+{
+
+}
+
+
+void MainWindow::on_pushButtonReloadTables_clicked()
+{
+    AfficheAdministrateur();
+    AfficheModerateur();
+    AfficheProducteur();
+    AfficheModerateurAdmin();
+    AfficheProducteurAdmin();
+}
+
+void MainWindow::on_pushButtonAddModer_clicked()
+{
+    typeEmployeDialog="3";
+    qDebug()<<"type employe modo"<<typeEmployeDialog;
+    DialogAddAdmin dialog(this);
+    dialog.exec();
 }
 

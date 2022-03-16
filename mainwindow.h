@@ -21,8 +21,19 @@ public:
     void AfficheModerateurAdmin();
     void AfficheProducteurAdmin();
     int ligne;
+    QString typeEmployeDialog;
 private slots:
     void on_pushButtonAddAdmin_clicked();
+
+    void on_pushButtonDelAdmin_clicked();
+
+    void on_action_Quit_triggered();
+
+    void on_pushButtonModifyAdmin_clicked();
+
+    void on_pushButtonReloadTables_clicked();
+
+    void on_pushButtonAddModer_clicked();
 
 private:
     Ui::MainWindow *ui;
