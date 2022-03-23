@@ -11,17 +11,20 @@ CONFIG += c++11
 SOURCES += \
     dialogaddadmin.cpp \
     dialogconnexion.cpp \
+    dialogmodify.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     dialogaddadmin.h \
     dialogconnexion.h \
+    dialogmodify.h \
     mainwindow.h
 
 FORMS += \
     dialogaddadmin.ui \
     dialogconnexion.ui \
+    dialogmodify.ui \
     mainwindow.ui
 
 # Default rules for deployment.

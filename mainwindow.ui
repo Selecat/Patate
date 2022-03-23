@@ -126,6 +126,12 @@ color: rgb(27, 27, 29);</string>
                    <iconset resource="ressources.qrc">
                     <normaloff>:/images/Images/reload.png</normaloff>:/images/Images/reload.png</iconset>
                   </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>18</width>
+                    <height>18</height>
+                   </size>
+                  </property>
                  </widget>
                 </item>
                 <item>
@@ -218,8 +224,14 @@ color: rgb(27, 27, 29);</string>
             <property name="styleSheet">
              <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(40, 158, 196, 255), stop:1 rgba(60, 196, 220, 255));</string>
             </property>
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
             <property name="selectionMode">
              <enum>QAbstractItemView::SingleSelection</enum>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
             </property>
             <attribute name="horizontalHeaderVisible">
              <bool>true</bool>
@@ -310,7 +322,7 @@ color: rgb(27, 27, 29);</string>
 color: rgb(27, 27, 29);</string>
               </property>
               <property name="text">
-               <string>Save</string>
+               <string>Modify</string>
               </property>
              </widget>
             </item>
@@ -515,7 +527,7 @@ color: rgb(27, 27, 29);</string>
 color: rgb(27, 27, 29);</string>
                 </property>
                 <property name="text">
-                 <string>Save</string>
+                 <string>Modify</string>
                 </property>
                </widget>
               </item>

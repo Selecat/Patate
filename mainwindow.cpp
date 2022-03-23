@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "dialogaddadmin.h"
+#include "dialogmodify.h"
 
 #include <QCheckBox>
 #include <QSqlQuery>
@@ -74,7 +75,10 @@ void MainWindow::AfficheAdministrateur()
         ui->tableWidgetAdministrateur->setItem(ligne-1,5,new QTableWidgetItem(adminResult.value("concat(rueEmploye, villeEmploye, CpEmploye)").toString()));
         //checkbox
         ui->tableWidgetAdministrateur->setCellWidget(ligne-1,6, new QCheckBox);
+        //numéro
+        ui->tableWidgetAdministrateur->setItem(ligne-1,7,new QTableWidgetItem(adminResult.value("numeroEmploye").toString()));
     }
+    ui->tableWidgetAdministrateur->hideColumn(7);
 }
 
 void MainWindow::AfficheModerateur()
@@ -148,6 +152,7 @@ void MainWindow::AfficheProducteur()
         ui->tableWidgetProducteur->setItem(ligne-1,5,new QTableWidgetItem(resModo.value("adresseProducteur").toString()));
         //checkbox
         ui->tableWidgetProducteur->setCellWidget(ligne-1,6, new QCheckBox);
+        //le numéro du producteur
     }
 }
 //amogus
@@ -232,6 +237,7 @@ void MainWindow::on_pushButtonAddAdmin_clicked()
    typeEmployeDialog="2";
    DialogAddAdmin dialog(this);
    dialog.exec();
+
    qDebug()<<"type employe admin"<<typeEmployeDialog;
 }
 
@@ -267,6 +273,26 @@ void MainWindow::on_action_Quit_triggered()
 
 void MainWindow::on_pushButtonModifyAdmin_clicked()
 {
+    //récupérer les valeur
+    int row=ui->tableWidgetAdministrateur->currentRow();
+
+    QString sonId = ui->tableWidgetAdministrateur->item(row, 7)->text();
+    QString sonPrenom = ui->tableWidgetAdministrateur->item(row, 2)->text();
+    QString sonNom = ui->tableWidgetAdministrateur->item(row, 1)->text();
+    QString sonlogin = ui->tableWidgetAdministrateur->item(row,0)->text();
+    QString sonPhone = ui->tableWidgetAdministrateur->item(row,3)->text();
+    QString sonMail = ui->tableWidgetAdministrateur->item(row,4)->text();
+    //adresse 5
+
+    //ouvrir le dialog
+    DialogModify dialogModify(this);
+    dialogModify.setId(sonId);
+    dialogModify.setNom(sonNom);
+    dialogModify.setPrenom(sonPrenom);
+    dialogModify.setLogin(sonlogin);
+    dialogModify.setPhone(sonPhone);
+    dialogModify.setMail(sonMail);
+    dialogModify.exec();
 
 }
 

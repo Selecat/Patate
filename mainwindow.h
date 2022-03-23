@@ -22,7 +22,8 @@ public:
     void AfficheProducteurAdmin();
     int ligne;
     QString typeEmployeDialog;
-private slots:
+
+    private slots:
     void on_pushButtonAddAdmin_clicked();
 
     void on_pushButtonDelAdmin_clicked();
