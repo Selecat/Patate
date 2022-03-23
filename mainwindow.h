@@ -35,6 +35,8 @@ private slots:
 
     void on_pushButtonAddModer_clicked();
 
+    void on_pushButtonReloadTablesAdmin_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

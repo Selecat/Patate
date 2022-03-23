@@ -288,3 +288,13 @@ void MainWindow::on_pushButtonAddModer_clicked()
     dialog.exec();
 }
 
+
+void MainWindow::on_pushButtonReloadTablesAdmin_clicked()
+{
+    AfficheAdministrateur();
+    AfficheModerateur();
+    AfficheProducteur();
+    AfficheModerateurAdmin();
+    AfficheProducteurAdmin();
+}
+

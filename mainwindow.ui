@@ -13,10 +13,17 @@
   <property name="windowTitle">
    <string>Dashboard</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:rgb(48, 156, 172);
+color: rgb(36, 47, 52);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_15">
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
+      <property name="styleSheet">
+       <string notr="true">background-color: #c0ecec;</string>
+      </property>
       <property name="currentIndex">
        <number>0</number>
       </property>
@@ -108,8 +115,16 @@
                 </item>
                 <item>
                  <widget class="QPushButton" name="pushButtonReloadTables">
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(46, 194, 126);
+color: rgb(27, 27, 29);</string>
+                  </property>
                   <property name="text">
                    <string>Reload tables</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="ressources.qrc">
+                    <normaloff>:/images/Images/reload.png</normaloff>:/images/Images/reload.png</iconset>
                   </property>
                  </widget>
                 </item>
@@ -200,6 +215,9 @@
               <height>200</height>
              </size>
             </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(40, 158, 196, 255), stop:1 rgba(60, 196, 220, 255));</string>
+            </property>
             <property name="selectionMode">
              <enum>QAbstractItemView::SingleSelection</enum>
             </property>
@@ -263,6 +281,10 @@
             </item>
             <item>
              <widget class="QPushButton" name="pushButtonAddAdmin">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(46, 194, 126);
+color: rgb(27, 27, 29);</string>
+              </property>
               <property name="text">
                <string>Add</string>
               </property>
@@ -283,6 +305,10 @@
             </item>
             <item>
              <widget class="QPushButton" name="pushButtonModifyAdmin">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(46, 194, 126);
+color: rgb(27, 27, 29);</string>
+              </property>
               <property name="text">
                <string>Save</string>
               </property>
@@ -303,6 +329,10 @@
             </item>
             <item>
              <widget class="QPushButton" name="pushButtonDelAdmin">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(46, 194, 126);
+color: rgb(27, 27, 29);</string>
+              </property>
               <property name="text">
                <string>Delete</string>
               </property>
@@ -393,6 +423,9 @@
                 <height>200</height>
                </size>
               </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(60, 196, 220);</string>
+              </property>
               <attribute name="horizontalHeaderVisible">
                <bool>true</bool>
               </attribute>
@@ -453,6 +486,10 @@
               </item>
               <item>
                <widget class="QPushButton" name="pushButtonAddModer">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(46, 194, 126);
+color: rgb(27, 27, 29);</string>
+                </property>
                 <property name="text">
                  <string>Add</string>
                 </property>
@@ -473,6 +510,10 @@
               </item>
               <item>
                <widget class="QPushButton" name="pushButtonModifyModer">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(46, 194, 126);
+color: rgb(27, 27, 29);</string>
+                </property>
                 <property name="text">
                  <string>Save</string>
                 </property>
@@ -493,6 +534,10 @@
               </item>
               <item>
                <widget class="QPushButton" name="pushButtonDelModer">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(46, 194, 126);
+color: rgb(27, 27, 29);</string>
+                </property>
                 <property name="text">
                  <string>Delete</string>
                 </property>
@@ -585,6 +630,9 @@
                 <height>200</height>
                </size>
               </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(60, 196, 220);</string>
+              </property>
               <attribute name="horizontalHeaderVisible">
                <bool>true</bool>
               </attribute>
@@ -645,6 +693,10 @@
               </item>
               <item>
                <widget class="QPushButton" name="pushButtonAddProd">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(46, 194, 126);
+color: rgb(27, 27, 29);</string>
+                </property>
                 <property name="text">
                  <string>Add</string>
                 </property>
@@ -665,6 +717,10 @@
               </item>
               <item>
                <widget class="QPushButton" name="pushButtonModifyProd">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(46, 194, 126);
+color: rgb(27, 27, 29);</string>
+                </property>
                 <property name="text">
                  <string>Save</string>
                 </property>
@@ -685,6 +741,10 @@
               </item>
               <item>
                <widget class="QPushButton" name="pushButtonDelProd">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(46, 194, 126);
+color: rgb(27, 27, 29);</string>
+                </property>
                 <property name="text">
                  <string>Delete</string>
                 </property>
@@ -725,265 +785,323 @@
        </layout>
       </widget>
       <widget class="QWidget" name="DashboardAdministrateur">
-       <layout class="QVBoxLayout" name="verticalLayout_12">
+       <layout class="QVBoxLayout" name="verticalLayout_11">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_11">
+         <layout class="QHBoxLayout" name="horizontalLayout_17">
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_10">
+           <spacer name="horizontalSpacer_25">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_9">
             <item>
-             <spacer name="horizontalSpacer_25">
+             <spacer name="verticalSpacer_5">
               <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Maximum</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>40</width>
-                <height>20</height>
+                <width>20</width>
+                <height>18</height>
                </size>
               </property>
              </spacer>
             </item>
             <item>
-             <layout class="QVBoxLayout" name="verticalLayout_9">
+             <layout class="QHBoxLayout" name="horizontalLayout_9">
               <item>
-               <spacer name="verticalSpacer_5">
+               <spacer name="horizontalSpacer_23">
                 <property name="orientation">
-                 <enum>Qt::Vertical</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>20</width>
+                  <width>40</width>
                   <height>20</height>
                  </size>
                 </property>
                </spacer>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_9">
-                <item>
-                 <spacer name="horizontalSpacer_23">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLabel" name="labelAdministrator">
-                  <property name="text">
-                   <string>ADMINISTRATOR</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_24">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-               </layout>
+               <widget class="QLabel" name="labelAdministrator">
+                <property name="text">
+                 <string>ADMINISTRATOR</string>
+                </property>
+               </widget>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_12">
-                <item>
-                 <spacer name="horizontalSpacer_29">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QLabel" name="labelTableModeratorAdmin">
-                  <property name="text">
-                   <string>Moderators</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_30">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-               </layout>
+               <spacer name="horizontalSpacer_24">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
              </layout>
             </item>
             <item>
-             <spacer name="horizontalSpacer_26">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
+             <layout class="QHBoxLayout" name="horizontalLayout_10">
+              <item>
+               <spacer name="horizontalSpacer_41">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButtonReloadTablesAdmin">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Reload tables</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_42">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_12">
+              <item>
+               <spacer name="horizontalSpacer_29">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QLabel" name="labelTableModeratorAdmin">
+                <property name="text">
+                 <string>Moderators</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_30">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
             </item>
            </layout>
           </item>
           <item>
-           <widget class="QTableWidget" name="tableWidgetModerateurAdmin">
-            <property name="minimumSize">
+           <spacer name="horizontalSpacer_26">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
              <size>
-              <width>1330</width>
-              <height>200</height>
+              <width>40</width>
+              <height>20</height>
              </size>
             </property>
-            <property name="maximumSize">
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tableWidgetModerateurAdmin">
+          <property name="minimumSize">
+           <size>
+            <width>1330</width>
+            <height>200</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>200</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(60, 196, 220);</string>
+          </property>
+          <attribute name="horizontalHeaderVisible">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>Login</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Name</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>First Name</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Phone</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Mail</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Address</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Select</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_13">
+          <item>
+           <spacer name="horizontalSpacer_31">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
              <size>
-              <width>16777215</width>
-              <height>200</height>
+              <width>40</width>
+              <height>20</height>
              </size>
             </property>
-            <attribute name="horizontalHeaderVisible">
-             <bool>true</bool>
-            </attribute>
-            <attribute name="verticalHeaderVisible">
-             <bool>false</bool>
-            </attribute>
-            <column>
-             <property name="text">
-              <string>Login</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Name</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>First Name</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Phone</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Mail</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Address</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Select</string>
-             </property>
-            </column>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonAddModerAdmin">
+            <property name="text">
+             <string>Add</string>
+            </property>
            </widget>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_13">
-            <item>
-             <spacer name="horizontalSpacer_31">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButtonAddModerAdmin">
-              <property name="text">
-               <string>Add</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_32">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButtonModifyModerAdmin">
-              <property name="text">
-               <string>Save</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_33">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButtonDelModerAdmin">
-              <property name="text">
-               <string>Delete</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_34">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
+           <spacer name="horizontalSpacer_32">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonModifyModerAdmin">
+            <property name="text">
+             <string>Save</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_33">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonDelModerAdmin">
+            <property name="text">
+             <string>Delete</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_34">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_7">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Maximum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>100</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -1037,6 +1155,9 @@
               <width>16777215</width>
               <height>200</height>
              </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(60, 196, 220);</string>
             </property>
             <attribute name="horizontalHeaderVisible">
              <bool>true</bool>
@@ -1218,6 +1339,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="ressources.qrc"/>
+ </resources>
  <connections/>
 </ui>
