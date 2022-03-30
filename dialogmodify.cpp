@@ -1,4 +1,5 @@
 #include "dialogmodify.h"
+#include "dialogmodify.h"
 #include "ui_dialogmodify.h"
 
 #include <QRegExpValidator>
@@ -20,13 +21,7 @@ DialogModify::~DialogModify()
 void DialogModify::setId(QString sonId)
 {
     idAdmin = sonId;
-    QString txtReqAdresseAdmin = "select rueEmploye, villeEmploye, CpEmploye from Employe where nomeroEmploye = "+ idAdmin;
-    QSqlQuery reqAdresseAdmin(txtReqAdresseAdmin);
-    reqAdresseAdmin.first();
-
-    ui->lineEditStreetModifyAdmin->setText(reqAdresseAdmin.value("rueEmploye").toString());
-    ui->lineEditCityModifyAdmin->setText(reqAdresseAdmin.value("villeEmploye").toString());
-    ui->lineEditDepartementModifyAdmin->setText(reqAdresseAdmin.value("CpEmploye").toString());
+    qDebug()<<"idAdmin dans dialogModify.cpp : "<<idAdmin;
 }
 
 void DialogModify::setPrenom(QString lePrenom)
@@ -54,6 +49,35 @@ void DialogModify::setMail(QString leMail)
     ui->lineEditMailModifyAdmin->setText(leMail);
 }
 
+void DialogModify::setRue()
+{
+    QString txtReqAdresseAdmin = "select rueEmploye from Employe where numeroEmploye = "+ idAdmin;
+    qDebug()<<txtReqAdresseAdmin;
+    QSqlQuery reqAdresseAdmin(txtReqAdresseAdmin);
+    reqAdresseAdmin.first();
+
+    ui->lineEditStreetModifyAdmin->setText(reqAdresseAdmin.value("rueEmploye").toString());
+}
+
+void DialogModify::setVille()
+{
+    QString txtReqAdresseAdmin = "select villeEmploye from Employe where numeroEmploye = "+ idAdmin;
+    QSqlQuery reqAdresseAdmin(txtReqAdresseAdmin);
+    reqAdresseAdmin.first();
+
+    ui->lineEditCityModifyAdmin->setText(reqAdresseAdmin.value("villeEmploye").toString());
+
+}
+
+void DialogModify::setCp()
+{
+    QString txtReqAdresseAdmin = "select cpEmploye from Employe where numeroEmploye = "+ idAdmin;
+    QSqlQuery reqAdresseAdmin(txtReqAdresseAdmin);
+    reqAdresseAdmin.first();
+
+    ui->lineEditDepartementModifyAdmin->setText(reqAdresseAdmin.value("CpEmploye").toString());
+
+}
 
 void DialogModify::on_pushButtonModifyAdministrator_clicked()
 {
@@ -73,12 +97,16 @@ void DialogModify::on_pushButtonModifyAdministrator_clicked()
             QString cityAdmin=ui->lineEditCityModifyAdmin->text();
             QString cpAdmin=ui->lineEditDepartementModifyAdmin->text();
 
+            //commande de modification SQL
+            if (passAdmin.size() > 8 && passAdmin == confirmPassAdmin) {
+                QString reqModifAdmin = "UPDATE Employe SET nomEmploye = '"+nameAdmin+"', prenomEmploye = '"+firstName+"',"
+                                                           "rueEmploye = '"+streetAdmin+"', cpEmploye = '"+cpAdmin+"',"
+                                                           "MailEmploye = '"+mailAdmin+"', TelEmploye = '"+phoneAdmin+"',"
+                                                           "PassEmploye=password('"+passAdmin+"') WHERE numeroEmploye = "+ idAdmin;
 
-            if (passAdmin == confirmPassAdmin) {
-                QString reqAddAdmin;// = "INSERT INTO Employe (loginEmploye, PassEmploye, nomEmploye, PrenomEmploye, TelEmploye, MailEmploye, rueEmploye, villeEmploye, CpEmploye, numeroTypeEmploye) Values('"+loginAdmin+"', password('"+passAdmin+"'), '"+nameAdmin+"', '"+firstName+"', '"+phoneAdmin+"', '"+mailAdmin+"', '"+streetAdmin+"', '"+cityAdmin+"', "+cpAdmin+", "+((MainWindow*)parent())->typeEmployeDialog+")";
-                QSqlQuery resAddAdmin (reqAddAdmin);
-                qDebug()<<reqAddAdmin;
-                resAddAdmin.next();
+                QSqlQuery resModifAdmin (reqModifAdmin);
+                qDebug()<<reqModifAdmin;
+                resModifAdmin.next();
 
             //demander à la mainwindow d'ajouter la ligne
             //((MainWindow*)parent())->AfficheAdministrateur();
@@ -88,7 +116,7 @@ void DialogModify::on_pushButtonModifyAdministrator_clicked()
         }
         else {
             //tr : text en brute
-            ui->labelErrorModify->setText(tr("Both password are differents"));
+            ui->labelErrorModify->setText(tr("Passwort is less than 8 or both pass are differents"));
         }
         }
         else

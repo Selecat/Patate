@@ -48,12 +48,12 @@ void MainWindow::AfficheAdministrateur()
     ui->tableWidgetAdministrateur->setRowCount(0);
 
     //SET NB COLONNES
-    ui->tableWidgetAdministrateur->setColumnCount(7);
+    ui->tableWidgetAdministrateur->setColumnCount(8);
 
     //stretch du tableau
     ui->tableWidgetAdministrateur->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     //requete affichage Administrateurs
-    QString adminQuery ="select numeroEmploye, nomEmploye, prenomEmploye, concat(rueEmploye, villeEmploye, CpEmploye), MailEmploye, TelEmploye, PassEmploye, loginEmploye, numeroTypeEmploye, supprEmploye from Employe where numeroTypeEmploye = 2 and supprEmploye = 0";
+    QString adminQuery ="select numeroEmploye, nomEmploye, prenomEmploye, concat(rueEmploye,' ', villeEmploye,' ', cpEmploye) AS adr, MailEmploye, TelEmploye, PassEmploye, loginEmploye, numeroTypeEmploye, supprEmploye from Employe where numeroTypeEmploye = 2 and supprEmploye = 0";
     QSqlQuery adminResult(adminQuery);
     while (adminResult.next()) {
         ligne++;
@@ -72,7 +72,7 @@ void MainWindow::AfficheAdministrateur()
         //mail
         ui->tableWidgetAdministrateur->setItem(ligne-1,4,new QTableWidgetItem(adminResult.value("MailEmploye").toString()));
         //@
-        ui->tableWidgetAdministrateur->setItem(ligne-1,5,new QTableWidgetItem(adminResult.value("concat(rueEmploye, villeEmploye, CpEmploye)").toString()));
+        ui->tableWidgetAdministrateur->setItem(ligne-1,5,new QTableWidgetItem(adminResult.value("adr").toString()));
         //checkbox
         ui->tableWidgetAdministrateur->setCellWidget(ligne-1,6, new QCheckBox);
         //numéro
@@ -87,12 +87,12 @@ void MainWindow::AfficheModerateur()
     ligne=0;
 
     //SET NB COLONNES
-    ui->tableWidgetModerateur->setColumnCount(7);
+    ui->tableWidgetModerateur->setColumnCount(8);
 
     //stretch du tableau
     ui->tableWidgetModerateur->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     //requete affichage Administrateurs
-    QString reqModo ="select numeroEmploye, nomEmploye, prenomEmploye, concat(rueEmploye, villeEmploye, CpEmploye), MailEmploye, TelEmploye, PassEmploye, loginEmploye, numeroTypeEmploye, supprEmploye from Employe where numeroTypeEmploye = 3";
+    QString reqModo ="select numeroEmploye, nomEmploye, prenomEmploye, concat(rueEmploye,' ', villeEmploye,' ', CpEmploye) AS adr, MailEmploye, TelEmploye, PassEmploye, loginEmploye, numeroTypeEmploye, supprEmploye from Employe where numeroTypeEmploye = 3 and supprEmploye = 0";
     QSqlQuery resModo(reqModo);
     while (resModo.next()) {
         ligne++;
@@ -112,10 +112,13 @@ void MainWindow::AfficheModerateur()
         //mail
         ui->tableWidgetModerateur->setItem(ligne-1,4,new QTableWidgetItem(resModo.value("MailEmploye").toString()));
         //@
-        ui->tableWidgetModerateur->setItem(ligne-1,5,new QTableWidgetItem(resModo.value("concat(rueEmploye, villeEmploye, CpEmploye)").toString()));
+        ui->tableWidgetModerateur->setItem(ligne-1,5,new QTableWidgetItem(resModo.value("adr").toString()));
         //checkbox
         ui->tableWidgetModerateur->setCellWidget(ligne-1,6, new QCheckBox);
+        //numéro
+        ui->tableWidgetModerateur->setItem(ligne-1,7,new QTableWidgetItem(resModo.value("numeroEmploye").toString()));
     }
+    ui->tableWidgetModerateur->hideColumn(7);
 }
 
 void MainWindow::AfficheProducteur()
@@ -152,7 +155,8 @@ void MainWindow::AfficheProducteur()
         ui->tableWidgetProducteur->setItem(ligne-1,5,new QTableWidgetItem(resModo.value("adresseProducteur").toString()));
         //checkbox
         ui->tableWidgetProducteur->setCellWidget(ligne-1,6, new QCheckBox);
-        //le numéro du producteur
+        //id
+        ui->tableWidgetProducteur->setItem(ligne-1, 7, new QTableWidgetItem(resModo.value("numeroProducteur").toString()));
     }
 }
 //amogus
@@ -272,26 +276,38 @@ void MainWindow::on_action_Quit_triggered()
 
 
 void MainWindow::on_pushButtonModifyAdmin_clicked()
-{
-    //récupérer les valeur
-    int row=ui->tableWidgetAdministrateur->currentRow();
+{ 
+    typeEmployeDialog = "3";
+    qDebug()<<"type employe admin"<<typeEmployeDialog;
 
-    QString sonId = ui->tableWidgetAdministrateur->item(row, 7)->text();
+    //récupérer les valeur
+    int row=ui->tableWidgetModerateur->currentRow();
+
+    qDebug()<<"ligne : "<<row;
+
     QString sonPrenom = ui->tableWidgetAdministrateur->item(row, 2)->text();
+    qDebug()<<sonPrenom;
     QString sonNom = ui->tableWidgetAdministrateur->item(row, 1)->text();
+    qDebug()<<sonNom;
     QString sonlogin = ui->tableWidgetAdministrateur->item(row,0)->text();
     QString sonPhone = ui->tableWidgetAdministrateur->item(row,3)->text();
     QString sonMail = ui->tableWidgetAdministrateur->item(row,4)->text();
-    //adresse 5
+    QString sonId = ui->tableWidgetAdministrateur->item(row, 7)->text();
+    qDebug()<<sonId;
+
 
     //ouvrir le dialog
     DialogModify dialogModify(this);
-    dialogModify.setId(sonId);
+
     dialogModify.setNom(sonNom);
     dialogModify.setPrenom(sonPrenom);
     dialogModify.setLogin(sonlogin);
     dialogModify.setPhone(sonPhone);
     dialogModify.setMail(sonMail);
+    dialogModify.setId(sonId);
+    dialogModify.setRue();
+    dialogModify.setVille();
+    dialogModify.setCp();
     dialogModify.exec();
 
 }
@@ -323,4 +339,61 @@ void MainWindow::on_pushButtonReloadTablesAdmin_clicked()
     AfficheModerateurAdmin();
     AfficheProducteurAdmin();
 }
+
+void MainWindow::on_pushButtonModifyModer_clicked()
+{
+    //récupérer les valeur
+    int row=ui->tableWidgetModerateur->currentRow();
+
+    qDebug()<<"ligne : "<<row;
+
+    QString sonPrenom = ui->tableWidgetModerateur->item(row, 2)->text();
+    qDebug()<<sonPrenom;
+    QString sonNom = ui->tableWidgetModerateur->item(row, 1)->text();
+    qDebug()<<sonNom;
+    QString sonlogin = ui->tableWidgetModerateur->item(row,0)->text();
+    QString sonPhone = ui->tableWidgetModerateur->item(row,3)->text();
+    QString sonMail = ui->tableWidgetModerateur->item(row,4)->text();
+    QString sonId = ui->tableWidgetModerateur->item(row, 7)->text();
+    qDebug()<<sonId;
+
+
+    //ouvrir le dialog
+    DialogModify dialogModify(this);
+
+    dialogModify.setNom(sonNom);
+    dialogModify.setPrenom(sonPrenom);
+    dialogModify.setLogin(sonlogin);
+    dialogModify.setPhone(sonPhone);
+    dialogModify.setMail(sonMail);
+    dialogModify.setId(sonId);
+    dialogModify.setRue();
+    dialogModify.setVille();
+    dialogModify.setCp();
+    dialogModify.exec();
+}
+
+
+void MainWindow::on_pushButtonDelModer_clicked()
+{
+    //on check le nb de lignes
+    for (int nbLigne = ui->tableWidgetModerateur->rowCount()-1; nbLigne>=0; nbLigne--) {
+        qDebug()<<"for checkbox"<<nbLigne;
+        //si la checkbox est cochée
+        if(((QCheckBox*)(ui->tableWidgetModerateur->cellWidget(nbLigne,6)))->isChecked())
+            {
+                qDebug()<<"if checkbox";
+                //on recupere le login
+                QString login = ui->tableWidgetModerateur->item(nbLigne,0)->text();
+                qDebug()<<"login : "<<login;
+                //passer le bool à 1
+                QString reqDelAdmin = "UPDATE Employe SET supprEmploye = 1 where loginEmploye='"+login+"'";
+                qDebug()<<"reqDelAdmin : "<<reqDelAdmin;
+                QSqlQuery resDelAdmin (reqDelAdmin);
+                resDelAdmin.next();
+            }
+    }
+    AfficheModerateur();
+}
+
 

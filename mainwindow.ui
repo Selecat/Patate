@@ -436,7 +436,13 @@ color: rgb(27, 27, 29);</string>
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgb(60, 196, 220);</string>
+               <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(40, 158, 196, 255), stop:1 rgba(60, 196, 220, 255));</string>
+              </property>
+              <property name="selectionMode">
+               <enum>QAbstractItemView::SingleSelection</enum>
+              </property>
+              <property name="selectionBehavior">
+               <enum>QAbstractItemView::SelectRows</enum>
               </property>
               <attribute name="horizontalHeaderVisible">
                <bool>true</bool>
@@ -643,7 +649,7 @@ color: rgb(27, 27, 29);</string>
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgb(60, 196, 220);</string>
+               <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(40, 158, 196, 255), stop:1 rgba(60, 196, 220, 255));</string>
               </property>
               <attribute name="horizontalHeaderVisible">
                <bool>true</bool>

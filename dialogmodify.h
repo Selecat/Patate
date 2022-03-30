@@ -20,7 +20,9 @@ public:
     void setLogin(QString leLogin);
     void setPhone(QString lePhone);
     void setMail(QString leMail);
-    void setRue(QString laRue);
+    void setRue();
+    void setVille();
+    void setCp();
 
 private slots:
     void on_pushButtonModifyAdministrator_clicked();

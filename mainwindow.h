@@ -38,6 +38,10 @@ public:
 
     void on_pushButtonReloadTablesAdmin_clicked();
 
+    void on_pushButtonModifyModer_clicked();
+
+    void on_pushButtonDelModer_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
