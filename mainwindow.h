@@ -42,6 +42,8 @@ public:
 
     void on_pushButtonDelModer_clicked();
 
+    void on_pushButtonAddProd_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

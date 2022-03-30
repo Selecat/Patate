@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     dialogaddadmin.cpp \
+    dialogaddproducer.cpp \
     dialogconnexion.cpp \
     dialogmodify.cpp \
     main.cpp \
@@ -17,12 +18,14 @@ SOURCES += \
 
 HEADERS += \
     dialogaddadmin.h \
+    dialogaddproducer.h \
     dialogconnexion.h \
     dialogmodify.h \
     mainwindow.h
 
 FORMS += \
     dialogaddadmin.ui \
+    dialogaddproducer.ui \
     dialogconnexion.ui \
     dialogmodify.ui \
     mainwindow.ui

@@ -132,9 +132,9 @@ void MainWindow::AfficheProducteur()
     //stretch du tableau
     ui->tableWidgetProducteur->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     //requete affichage Administrateurs
-    QString reqModo ="select numeroproducteur, loginProducteur, nomProducteur, prenomProducteur, adresseProducteur, telProducteur, mailProducteur, validiteProducteur from Producteur where validiteProducteur = 1";
-    QSqlQuery resModo(reqModo);
-    while (resModo.next()) {
+    QString reqProd ="select numeroproducteur, loginProducteur, nomProducteur, prenomProducteur, telProducteur, dateInscriptionProducteur, imageProducteur, imageFermeProducteur, numeroabonnement, numeroabonnement, mailProducteur, validiteProducteur, raisonInvaliditeProducteur, siren, concat(rueProducteur,' ',villProducteur,' ',cpProducteur) as adr from Producteur where validiteProducteur = 1";
+    QSqlQuery resProd(reqProd);
+    while (resProd.next()) {
         ligne++;
 
         //ajout des lignes et colonnes
@@ -142,21 +142,21 @@ void MainWindow::AfficheProducteur()
 
         //odubic
         //login
-        ui->tableWidgetProducteur->setItem(ligne-1,0,new QTableWidgetItem(resModo.value("loginProducteur").toString()));
+        ui->tableWidgetProducteur->setItem(ligne-1,0,new QTableWidgetItem(resProd.value("loginProducteur").toString()));
         //nomsupprEmploye
-        ui->tableWidgetProducteur->setItem(ligne-1,1,new QTableWidgetItem(resModo.value("nomProducteur").toString()));
+        ui->tableWidgetProducteur->setItem(ligne-1,1,new QTableWidgetItem(resProd.value("nomProducteur").toString()));
         //prenom
-        ui->tableWidgetProducteur->setItem(ligne-1,2,new QTableWidgetItem(resModo.value("prenomProducteur").toString()));
+        ui->tableWidgetProducteur->setItem(ligne-1,2,new QTableWidgetItem(resProd.value("prenomProducteur").toString()));
         //tel
-        ui->tableWidgetProducteur->setItem(ligne-1,3,new QTableWidgetItem(resModo.value("telProducteur").toString()));
+        ui->tableWidgetProducteur->setItem(ligne-1,3,new QTableWidgetItem(resProd.value("telProducteur").toString()));
         //mail
-        ui->tableWidgetProducteur->setItem(ligne-1,4,new QTableWidgetItem(resModo.value("mailProducteur").toString()));
+        ui->tableWidgetProducteur->setItem(ligne-1,4,new QTableWidgetItem(resProd.value("mailProducteur").toString()));
         //@
-        ui->tableWidgetProducteur->setItem(ligne-1,5,new QTableWidgetItem(resModo.value("adresseProducteur").toString()));
+        ui->tableWidgetProducteur->setItem(ligne-1,5,new QTableWidgetItem(resProd.value("adresseProducteur").toString()));
         //checkbox
         ui->tableWidgetProducteur->setCellWidget(ligne-1,6, new QCheckBox);
         //id
-        ui->tableWidgetProducteur->setItem(ligne-1, 7, new QTableWidgetItem(resModo.value("numeroProducteur").toString()));
+        ui->tableWidgetProducteur->setItem(ligne-1, 7, new QTableWidgetItem(resProd.value("numeroProducteur").toString()));
     }
 }
 //amogus
@@ -173,9 +173,9 @@ void MainWindow::AfficheModerateurAdmin()
     //stretch du tableau
     ui->tableWidgetModerateurAdmin->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     //requete affichage Administrateurs
-    QString reqModoAdmin ="select numeroEmploye, nomEmploye, prenomEmploye, concat(rueEmploye, villeEmploye, CpEmploye), MailEmploye, TelEmploye, PassEmploye, loginEmploye, numeroTypeEmploye, supprEmploye from Employe where numeroTypeEmploye = 3";
-    QSqlQuery resModoAdmin(reqModoAdmin);
-    while (resModoAdmin.next()) {
+    QString reqProdAdmin ="select numeroproducteur, loginProducteur, nomProducteur, prenomProducteur, telProducteur, dateInscriptionProducteur, imageProducteur, imageFermeProducteur, numeroabonnement, numeroabonnement, mailProducteur, validiteProducteur, raisonInvaliditeProducteur, siren, concat(rueProducteur,' ',villProducteur,' ',cpProducteur) as adr from Producteur where validiteProducteur = 1";
+    QSqlQuery resProdAdmin(reqProdAdmin);
+    while (resProdAdmin.next()) {
         ligne++;
 
         //ajout des lignes et colonnes
@@ -183,17 +183,17 @@ void MainWindow::AfficheModerateurAdmin()
 
         //odubic
         //login
-        ui->tableWidgetModerateurAdmin->setItem(ligne-1,0,new QTableWidgetItem(resModoAdmin.value("loginEmploye").toString()));
+        ui->tableWidgetModerateurAdmin->setItem(ligne-1,0,new QTableWidgetItem(resProdAdmin.value("loginProducteur").toString()));
         //nomsupprEmploye
-        ui->tableWidgetModerateurAdmin->setItem(ligne-1,1,new QTableWidgetItem(resModoAdmin.value("nomEmploye").toString()));
+        ui->tableWidgetModerateurAdmin->setItem(ligne-1,1,new QTableWidgetItem(resProdAdmin.value("nomProducteur").toString()));
         //prenom
-        ui->tableWidgetModerateurAdmin->setItem(ligne-1,2,new QTableWidgetItem(resModoAdmin.value("prenomEmploye").toString()));
+        ui->tableWidgetModerateurAdmin->setItem(ligne-1,2,new QTableWidgetItem(resProdAdmin.value("prenomProducteur").toString()));
         //tel
-        ui->tableWidgetModerateurAdmin->setItem(ligne-1,3,new QTableWidgetItem(resModoAdmin.value("TelEmploye").toString()));
+        ui->tableWidgetModerateurAdmin->setItem(ligne-1,3,new QTableWidgetItem(resProdAdmin.value("telProducteur").toString()));
         //mail
-        ui->tableWidgetModerateurAdmin->setItem(ligne-1,4,new QTableWidgetItem(resModoAdmin.value("MailEmploye").toString()));
+        ui->tableWidgetModerateurAdmin->setItem(ligne-1,4,new QTableWidgetItem(resProdAdmin.value("mailProducteur").toString()));
         //@
-        ui->tableWidgetModerateurAdmin->setItem(ligne-1,5,new QTableWidgetItem(resModoAdmin.value("concat(rueEmploye, villeEmploye, CpEmploye)").toString()));
+        ui->tableWidgetModerateurAdmin->setItem(ligne-1,5,new QTableWidgetItem(resProdAdmin.value("adr").toString()));
         //checkbox
         ui->tableWidgetModerateurAdmin->setCellWidget(ligne-1,6, new QCheckBox);
     }
@@ -396,4 +396,10 @@ void MainWindow::on_pushButtonDelModer_clicked()
     AfficheModerateur();
 }
 
+
+
+void MainWindow::on_pushButtonAddProd_clicked()
+{
+
+}
 
