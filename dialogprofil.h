@@ -14,7 +14,7 @@ class DialogProfil : public QDialog
 public:
     explicit DialogProfil(QWidget *parent = nullptr);
     ~DialogProfil();
-
+    void getLeType(QString leType);
 private:
     Ui::DialogProfil *ui;
 };

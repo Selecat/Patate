@@ -6,14 +6,78 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>470</width>
-    <height>429</height>
+    <width>546</width>
+    <height>503</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>DialogProfil</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #c0ecec;color : black;</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <spacer name="horizontalSpacer_13">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelTypeHeadProfil">
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>type</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_14">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
    <item>
     <widget class="QSplitter" name="splitter">
      <property name="orientation">
@@ -37,49 +101,49 @@
        <item>
         <layout class="QFormLayout" name="formLayout">
          <item row="0" column="0">
-          <widget class="QLabel" name="label">
+          <widget class="QLabel" name="labelTypeProfil">
            <property name="text">
-            <string>TextLabel</string>
+            <string>Type :</string>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="lineEdit"/>
+          <widget class="QLineEdit" name="lineEditTypeProfil"/>
          </item>
          <item row="1" column="0">
-          <widget class="QLabel" name="label_8">
+          <widget class="QLabel" name="labelNameProfil">
            <property name="text">
-            <string>TextLabel</string>
+            <string>Name :</string>
            </property>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="lineEdit_8"/>
+          <widget class="QLineEdit" name="lineEditNameProfil"/>
          </item>
          <item row="2" column="0">
-          <widget class="QLabel" name="label_2">
+          <widget class="QLabel" name="labelFNameProfil">
            <property name="text">
-            <string>TextLabel</string>
+            <string>First Name :</string>
            </property>
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QLineEdit" name="lineEdit_2"/>
+          <widget class="QLineEdit" name="lineEditFNameProfil"/>
          </item>
          <item row="3" column="0">
-          <widget class="QLabel" name="label_3">
+          <widget class="QLabel" name="labelLoginProfil">
            <property name="text">
-            <string>TextLabel</string>
+            <string>Login :</string>
            </property>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QLineEdit" name="lineEdit_5"/>
+          <widget class="QLineEdit" name="lineEditLoginProfil"/>
          </item>
          <item row="4" column="0">
-          <widget class="QLabel" name="label_4">
+          <widget class="QLabel" name="labelPhoneProfil">
            <property name="text">
-            <string>TextLabel</string>
+            <string>Phone :</string>
            </property>
           </widget>
          </item>
@@ -87,44 +151,44 @@
           <widget class="QLineEdit" name="lineEdit_7"/>
          </item>
          <item row="5" column="0">
-          <widget class="QLabel" name="label_7">
+          <widget class="QLabel" name="labelMailProfil">
            <property name="text">
-            <string>TextLabel</string>
+            <string>E-Mail : </string>
            </property>
           </widget>
          </item>
          <item row="5" column="1">
-          <widget class="QLineEdit" name="lineEdit_3"/>
+          <widget class="QLineEdit" name="lineEditMailProfil"/>
          </item>
          <item row="6" column="0">
-          <widget class="QLabel" name="label_5">
+          <widget class="QLabel" name="labelStreetProfil">
            <property name="text">
-            <string>TextLabel</string>
+            <string>Street :</string>
            </property>
           </widget>
          </item>
          <item row="6" column="1">
-          <widget class="QLineEdit" name="lineEdit_4"/>
+          <widget class="QLineEdit" name="lineEditStreetProfil"/>
          </item>
          <item row="7" column="0">
-          <widget class="QLabel" name="label_6">
+          <widget class="QLabel" name="labelCityProfil">
            <property name="text">
-            <string>TextLabel</string>
+            <string>City :</string>
            </property>
           </widget>
          </item>
          <item row="7" column="1">
-          <widget class="QLineEdit" name="lineEdit_6"/>
+          <widget class="QLineEdit" name="lineEditCityProfil"/>
          </item>
          <item row="8" column="0">
-          <widget class="QLabel" name="label_9">
+          <widget class="QLabel" name="labelCPProfil">
            <property name="text">
-            <string>TextLabel</string>
+            <string>Postal Code : </string>
            </property>
           </widget>
          </item>
          <item row="8" column="1">
-          <widget class="QLineEdit" name="lineEdit_9"/>
+          <widget class="QLineEdit" name="lineEditCPProfil"/>
          </item>
         </layout>
        </item>
@@ -164,14 +228,14 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QLabel" name="label_10">
+          <widget class="QLabel" name="labelPassProfil">
            <property name="text">
-            <string>TextLabel</string>
+            <string>Password : </string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_10"/>
+          <widget class="QLineEdit" name="lineEditPassProfil"/>
          </item>
          <item>
           <spacer name="horizontalSpacer">
@@ -190,14 +254,14 @@
           </spacer>
          </item>
          <item>
-          <widget class="QLabel" name="label_11">
+          <widget class="QLabel" name="labelConfirmPassProfil">
            <property name="text">
-            <string>TextLabel</string>
+            <string>Confirm Password : </string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_11"/>
+          <widget class="QLineEdit" name="lineEditConfirmPassProfil"/>
          </item>
         </layout>
        </item>
@@ -234,6 +298,10 @@
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_2">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(46, 194, 126);
+color: rgb(27, 27, 29);</string>
+           </property>
            <property name="text">
             <string>Update</string>
            </property>
@@ -254,6 +322,10 @@
          </item>
          <item>
           <widget class="QPushButton" name="pushButton">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(46, 194, 126);
+color: rgb(27, 27, 29);</string>
+           </property>
            <property name="text">
             <string>Cancel</string>
            </property>
