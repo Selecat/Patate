@@ -7,6 +7,8 @@
 #include <QSqlQuery>
 #include <QStackedWidget>
 #include <QDebug>
+#include <QPixmap>
+#include <QLabel>
 
 MainWindow::MainWindow(int leType, QWidget *parent)
     : QMainWindow(parent)
@@ -127,37 +129,60 @@ void MainWindow::AfficheProducteur()
     ligne=0;
 
     //SET NB COLONNES
-    ui->tableWidgetProducteur->setColumnCount(7);
+    ui->tableWidgetProducteurInvalid->setColumnCount(10);
 
     //stretch du tableau
-    ui->tableWidgetProducteur->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableWidgetProducteurInvalid->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     //requete affichage Administrateurs
-    QString reqProd ="select numeroproducteur, loginProducteur, nomProducteur, prenomProducteur, telProducteur, dateInscriptionProducteur, imageProducteur, imageFermeProducteur, numeroabonnement, numeroabonnement, mailProducteur, validiteProducteur, raisonInvaliditeProducteur, siren, concat(rueProducteur,' ',villProducteur,' ',cpProducteur) as adr from Producteur where validiteProducteur = 1";
+    QString reqProd ="select numeroproducteur, loginProducteur, nomProducteur, prenomProducteur, telProducteur, dateInscriptionProducteur, imageProducteur, "
+                     "imageFermeProducteur, numeroabonnement, mailProducteur, validiteProducteur, raisonInvaliditeProducteur, siren, "
+                     "concat(rueProducteur,' ',villeProducteur,' ',cpProducteur) as adr from Producteur where validiteProducteur = 0";
     QSqlQuery resProd(reqProd);
     while (resProd.next()) {
         ligne++;
 
         //ajout des lignes et colonnes
-        ui->tableWidgetProducteur->setRowCount(ligne);
+        ui->tableWidgetProducteurInvalid->setRowCount(ligne);
 
         //odubic
         //login
-        ui->tableWidgetProducteur->setItem(ligne-1,0,new QTableWidgetItem(resProd.value("loginProducteur").toString()));
+        ui->tableWidgetProducteurInvalid->setItem(ligne-1,0,new QTableWidgetItem(resProd.value("loginProducteur").toString()));
+        qDebug()<<resProd.value("loginProducteur").toString();
         //nomsupprEmploye
-        ui->tableWidgetProducteur->setItem(ligne-1,1,new QTableWidgetItem(resProd.value("nomProducteur").toString()));
+        ui->tableWidgetProducteurInvalid->setItem(ligne-1,1,new QTableWidgetItem(resProd.value("nomProducteur").toString()));
         //prenom
-        ui->tableWidgetProducteur->setItem(ligne-1,2,new QTableWidgetItem(resProd.value("prenomProducteur").toString()));
+        ui->tableWidgetProducteurInvalid->setItem(ligne-1,2,new QTableWidgetItem(resProd.value("prenomProducteur").toString()));
         //tel
-        ui->tableWidgetProducteur->setItem(ligne-1,3,new QTableWidgetItem(resProd.value("telProducteur").toString()));
+        ui->tableWidgetProducteurInvalid->setItem(ligne-1,3,new QTableWidgetItem(resProd.value("telProducteur").toString()));
         //mail
-        ui->tableWidgetProducteur->setItem(ligne-1,4,new QTableWidgetItem(resProd.value("mailProducteur").toString()));
+        ui->tableWidgetProducteurInvalid->setItem(ligne-1,4,new QTableWidgetItem(resProd.value("mailProducteur").toString()));
         //@
-        ui->tableWidgetProducteur->setItem(ligne-1,5,new QTableWidgetItem(resProd.value("adresseProducteur").toString()));
+        ui->tableWidgetProducteurInvalid->setItem(ligne-1,5,new QTableWidgetItem(resProd.value("adr").toString()));
         //checkbox
-        ui->tableWidgetProducteur->setCellWidget(ligne-1,6, new QCheckBox);
+        ui->tableWidgetProducteurInvalid->setCellWidget(ligne-1,6, new QCheckBox);
+
+        //declaration du vecteur des image du producteur et de la ferme
+        QLabel *labelProfil = new QLabel();
+        labelProfil->setPixmap(QPixmap (resProd.value("imageProducteur").toString()).scaled(100,100));
+        labelProfil->setScaledContents(true);
+
+        QLabel *labelFerme = new QLabel();
+        labelProfil->setPixmap(QPixmap (resProd.value("imageFermeProducteur").toString()).scaled(100,100));
+        labelProfil->setScaledContents(true);
+
+        //image producteur
+        ui->tableWidgetProducteurInvalid->setCellWidget(ligne-1,7, labelProfil);
+        qDebug()<<resProd.value("imageProducteur").toString();
+        //image ferme
+        ui->tableWidgetProducteurInvalid->setCellWidget(ligne-1,8, labelFerme);
+
         //id
-        ui->tableWidgetProducteur->setItem(ligne-1, 7, new QTableWidgetItem(resProd.value("numeroProducteur").toString()));
+        ui->tableWidgetProducteurInvalid->setItem(ligne-1, 9, new QTableWidgetItem(resProd.value("numeroProducteur").toString()));
+
     }
+    ui->tableWidgetProducteurInvalid->resizeColumnsToContents();
+    ui->tableWidgetProducteurInvalid->resizeRowsToContents();
+    ui->tableWidgetProducteurInvalid->update();
 }
 //amogus
 //Ideo ?
@@ -399,6 +424,18 @@ void MainWindow::on_pushButtonDelModer_clicked()
 
 
 void MainWindow::on_pushButtonAddProd_clicked()
+{
+
+}
+
+
+void MainWindow::on_pushButtonValidProd_clicked()
+{
+
+}
+
+
+void MainWindow::on_action_Profil_triggered()
 {
 
 }

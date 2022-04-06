@@ -44,6 +44,10 @@ public:
 
     void on_pushButtonAddProd_clicked();
 
+    void on_pushButtonValidProd_clicked();
+
+    void on_action_Profil_triggered();
+
 private:
     Ui::MainWindow *ui;
 };

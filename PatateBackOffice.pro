@@ -13,6 +13,7 @@ SOURCES += \
     dialogaddproducer.cpp \
     dialogconnexion.cpp \
     dialogmodify.cpp \
+    dialogprofil.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -21,6 +22,7 @@ HEADERS += \
     dialogaddproducer.h \
     dialogconnexion.h \
     dialogmodify.h \
+    dialogprofil.h \
     mainwindow.h
 
 FORMS += \
@@ -28,6 +30,7 @@ FORMS += \
     dialogaddproducer.ui \
     dialogconnexion.ui \
     dialogmodify.ui \
+    dialogprofil.ui \
     mainwindow.ui
 
 # Default rules for deployment.
