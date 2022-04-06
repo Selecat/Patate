@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "dialogaddadmin.h"
 #include "dialogmodify.h"
+#include "dialogprofil.h"
 
 #include <QCheckBox>
 #include <QSqlQuery>
@@ -129,7 +130,7 @@ void MainWindow::AfficheProducteur()
     ligne=0;
 
     //SET NB COLONNES
-    ui->tableWidgetProducteurInvalid->setColumnCount(10);
+    ui->tableWidgetProducteurInvalid->setColumnCount(9);
 
     //stretch du tableau
     ui->tableWidgetProducteurInvalid->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
@@ -163,16 +164,19 @@ void MainWindow::AfficheProducteur()
 
         //declaration du vecteur des image du producteur et de la ferme
         QLabel *labelProfil = new QLabel();
-        labelProfil->setPixmap(QPixmap (resProd.value("imageProducteur").toString()).scaled(100,100));
+        QString cheminImageProfil = "/home/jlopez/Documents/SIO2/git/Patate/"+resProd.value("imageProducteur").toString();
+        labelProfil->setPixmap(QPixmap (cheminImageProfil).scaled(100,100));
         labelProfil->setScaledContents(true);
 
         QLabel *labelFerme = new QLabel();
-        labelProfil->setPixmap(QPixmap (resProd.value("imageFermeProducteur").toString()).scaled(100,100));
-        labelProfil->setScaledContents(true);
+        QString cheminImageFerme="/home/jlopez/Documents/SIO2/git/Patate/"+resProd.value("imageFermeProducteur").toString();
+        qDebug()<<cheminImageFerme;
+        labelFerme->setPixmap(QPixmap (cheminImageFerme).scaled(100,100));
+        labelFerme->setScaledContents(true);
 
         //image producteur
         ui->tableWidgetProducteurInvalid->setCellWidget(ligne-1,7, labelProfil);
-        qDebug()<<resProd.value("imageProducteur").toString();
+        qDebug()<<resProd.value("imageFermeProducteur").toString();
         //image ferme
         ui->tableWidgetProducteurInvalid->setCellWidget(ligne-1,8, labelFerme);
 
@@ -343,6 +347,8 @@ void MainWindow::on_pushButtonReloadTables_clicked()
     AfficheAdministrateur();
     AfficheModerateur();
     AfficheProducteur();
+    //stretch du tableau
+    ui->tableWidgetProducteurInvalid->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     AfficheModerateurAdmin();
     AfficheProducteurAdmin();
 }
@@ -361,6 +367,8 @@ void MainWindow::on_pushButtonReloadTablesAdmin_clicked()
     AfficheAdministrateur();
     AfficheModerateur();
     AfficheProducteur();
+    //stretch du tableau
+    ui->tableWidgetProducteurInvalid->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     AfficheModerateurAdmin();
     AfficheProducteurAdmin();
 }
@@ -437,6 +445,9 @@ void MainWindow::on_pushButtonValidProd_clicked()
 
 void MainWindow::on_action_Profil_triggered()
 {
-
+    //typeEmployeDialog="3";
+    //qDebug()<<"type employe modo"<<typeEmployeDialog;
+    DialogProfil dialog(this);
+    dialog.exec();
 }
 
